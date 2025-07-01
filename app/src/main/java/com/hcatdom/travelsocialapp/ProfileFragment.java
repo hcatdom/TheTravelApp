@@ -11,6 +11,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.hcatdom.travelsocialapp.databinding.FragmentProfileBinding;
+import com.hcatdom.travelsocialapp.AddTripFragment;
+
 
 public class ProfileFragment extends Fragment {
 
@@ -30,9 +32,14 @@ public class ProfileFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         // Botón "Añadir viaje"
-        binding.addTripButton.setOnClickListener(v ->
-                Toast.makeText(getContext(), "Añadir viaje pulsado", Toast.LENGTH_SHORT).show()
-        );
+        binding.addTripButton.setOnClickListener(v ->{
+            requireActivity()
+                    .getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.fragmentContainer, new AddTripFragment())
+                    .addToBackStack(null)
+                    .commit();
+    });
 
         // Botón "Ver mis viajes"
         binding.viewTripsButton.setOnClickListener(v ->
