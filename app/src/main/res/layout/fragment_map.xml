@@ -8,20 +8,22 @@
     tools:context=".MapFragment"
     android:id="@+id/frameContainer">
 
+    //mapa
     <io.getstream.photoview.PhotoView
         android:id="@+id/photoView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        android:src="@drawable/mapa2" />
+        android:layout_height="match_parent"
+        android:src="@drawable/mapa2"/>
 
+    //pines
     <ImageView
         android:id="@+id/pin1"
         android:layout_width="55dp"
         android:layout_height="55dp"
         android:src="@drawable/pin3"
         android:layout_gravity="top|start"
-        android:visibility="visible"/>
+        android:visibility="visible" />
     <ImageView
         android:id="@+id/pin2"
         android:layout_width="55dp"

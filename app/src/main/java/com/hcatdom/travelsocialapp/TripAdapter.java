@@ -22,11 +22,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Adapter para mostrar una lista de viajes con ubicación y manejo de clicks en la imagen.
+ * Para los viajes en social
  */
 public class TripAdapter extends RecyclerView.Adapter<TripAdapter.TripViewHolder> {
 
-    /** Interfaz para escuchar clicks en la imagen del viaje */
+    /** Para detectar cuando se haga click */
     public interface OnTripClickListener {
         void onTripImageClick(Trip trip);
     }
@@ -63,10 +63,8 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.TripViewHolder
         holder.tvLocation.setText(trip.getLocation());
         holder.tvDescription.setText(trip.getDescription());
 
-        // Descargar imagen sin dependencias externas
-       holder.imgTrip.setImageResource(trip.getImageResId());
+        holder.imgTrip.setImageResource(trip.getImageResId());
 
-        // Asignar callback al click sobre la imagen
         holder.imgTrip.setOnClickListener(v -> listener.onTripImageClick(trip));
     }
 
@@ -75,7 +73,7 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.TripViewHolder
         return trips.size();
     }
 
-    /** ViewHolder que contiene vistas de cada item */
+    /** Viewholder que contiene vistas de cada item */
     static class TripViewHolder extends RecyclerView.ViewHolder {
         final ImageView imgTrip;
         final TextView tvTitle;

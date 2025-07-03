@@ -35,14 +35,12 @@ public class SocialFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container,
                              Bundle savedInstanceState) {
-        // 1) Inflar layout
+
         View root = inflater.inflate(R.layout.fragment_social, container, false);
 
-        // 2) Configurar RecyclerView con Layout vertical
         rvTrips = root.findViewById(R.id.rvTrips);
         rvTrips.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        // 3) Crear adapter con callback para clic en imagen
         adapter = new TripAdapter(trip -> {
             Intent intent = new Intent(getContext(), DetallesViaje.class);
             intent.putExtra(DetallesViaje.EXTRA_TRIP, (Serializable) trip);
@@ -50,7 +48,6 @@ public class SocialFragment extends Fragment {
         });
         rvTrips.setAdapter(adapter);
 
-        // 4) Cargar los 10 viajes de ejemplo
         loadLocalTrips();
 
         return root;
@@ -65,29 +62,29 @@ public class SocialFragment extends Fragment {
                 "Viaje de aventura a las montañas azules",
                 "Vacaciones a base de rutitas visitando los parajes del norte.",
                 R.drawable.bluemountains,
-                "La Comarca",
+                "Montañas Azules",
                 System.currentTimeMillis(),
-                "hobbit123"
+                "enano777"
         ));
 
         list.add(new Trip(
                 "2",
-                "Cascadas de Rivendel",
-                "Explora los jardines y salones acuáticos de Imladris.",
-                R.drawable.bluemountains,
-                "Rivendel",
+                "Devolviendo la luz a donde se merece :P",
+                "Tardeo destruyendo el anillo que los une a todos con los panas.",
+                R.drawable.mordor,
+                "Mordor",
                 System.currentTimeMillis() + 1000,
-                "elfo456"
+                "_.._tublancooo_.._"
         ));
 
         list.add(new Trip(
                 "3",
-                "Montañas Nubladas",
-                "Atraviesa pasajes y picos nevados en tu caravana.",
-                R.drawable.bluemountains,
-                "Montañas Nubladas",
+                "Cata de hidromiel en La Comarca",
+                "Un disfrute de los brebajes que fermentan los propios hobbits.",
+                R.drawable.comarca,
+                "La Comarca",
                 System.currentTimeMillis() + 2000,
-                "enano789"
+                "enano777"
         ));
 
         adapter.setTrips(list);

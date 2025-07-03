@@ -33,13 +33,11 @@ public class DetallesViaje extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trip_detail);
 
-        // 1) Referencias a las vistas
         detailImg = findViewById(R.id.detailImg);
         detailTitle = findViewById(R.id.detailTitle);
         detailLocation = findViewById(R.id.detailLocation);
         detailDescription = findViewById(R.id.detailDescription);
 
-        // 2) Recuperar el Trip enviado desde el fragmento
         Trip trip = null;
         if (getIntent().hasExtra(EXTRA_TRIP)) {
             Object obj = getIntent().getSerializableExtra(EXTRA_TRIP);
@@ -49,11 +47,9 @@ public class DetallesViaje extends AppCompatActivity {
         }
 
         if (trip != null) {
-            // 3) Rellenar datos
             detailTitle.setText(trip.getTitle());
             detailLocation.setText("Ubicación: " + trip.getLocation());
             detailDescription.setText(trip.getDescription());
-            // 4) Descargar imagen
             detailImg.setImageResource(trip.getImageResId());
         } else {
             detailTitle.setText("Detalle no disponible");
