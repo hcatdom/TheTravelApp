@@ -17,9 +17,30 @@
 
     <ImageView
         android:id="@+id/pin1"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:src="@drawable/pin"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:src="@drawable/pin3"
+        android:layout_gravity="top|start"
+        android:visibility="visible"/>
+    <ImageView
+        android:id="@+id/pin2"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:src="@drawable/pin3"
+        android:layout_gravity="top|start"
+        android:visibility="visible"/>
+    <ImageView
+        android:id="@+id/pin3"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:src="@drawable/pin3"
+        android:layout_gravity="top|start"
+        android:visibility="visible"/>
+    <ImageView
+        android:id="@+id/pin4"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:src="@drawable/pin4"
         android:layout_gravity="top|start"
         android:visibility="visible"/>
 
