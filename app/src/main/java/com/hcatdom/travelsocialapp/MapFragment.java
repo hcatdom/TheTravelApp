@@ -46,11 +46,11 @@ public class MapFragment extends Fragment {
         final float originalX1 = 1500f;
         final float originalY1 = 800f;
         final float originalX2 = 2350f;
-        final float originalY2 = 2800f;
-        final float originalX3 = 5800f;
-        final float originalY3 = 4000f;
-        final float originalX4 = 4800f;
-        final float originalY4 = 1200f;
+        final float originalY2 = 1800f;
+        final float originalX3 = 5450f;
+        final float originalY3 = 3600f;
+        final float originalX4 = 4700f;
+        final float originalY4 = 1600f;
 
         // Escucha los cambios de zoom y movimiento
         photoView.setOnMatrixChangeListener(new OnMatrixChangedListener() {
@@ -76,13 +76,13 @@ public class MapFragment extends Fragment {
 
                 // Coloca el pin (centrado)
                 pin1.setX(pinX1 - pin1.getWidth() / 2f);
-                pin1.setY(pinY1 - pin1.getHeight() / 2f);
+                pin1.setY(pinY1 - pin1.getHeight());
                 pin2.setX(pinX2 - pin2.getWidth() / 2f);
-                pin2.setY(pinY2 - pin2.getHeight() / 2f);
+                pin2.setY(pinY2 - pin2.getHeight());
                 pin3.setX(pinX3 - pin3.getWidth() / 2f);
-                pin3.setY(pinY3 - pin3.getHeight() / 2f);
+                pin3.setY(pinY3 - pin3.getHeight());
                 pin4.setX(pinX4 - pin4.getWidth() / 2f);
-                pin4.setY(pinY4 - pin4.getHeight() / 2f);
+                pin4.setY(pinY4 - pin4.getHeight());
             }
         });
     }
