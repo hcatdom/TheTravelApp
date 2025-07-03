@@ -1,41 +1,53 @@
 package com.hcatdom.travelsocialapp;
 
-/**
- * Modelo que representa un viaje publicado en la red social.
- */
-public class Trip {
+import java.io.Serializable;
 
-    private String id;           // ID del documento en Firestore
+/**
+ * Modelo que representa un viaje en la app.
+ */
+public class Trip implements Serializable {
+
+    private String id;           // ID único del viaje
     private String title;        // Título del viaje
-    private String description;  // Descripción corta
-    private String imageUrl;     // URL de la foto del viaje
-    private long timestamp;      // Fecha de creación en milisegundos
+    private String description;  // Descripción del viaje
+    private String imageUrl;     // URL de la imagen destacada
+    private String location;     // Ubicación (p.ej. "La Comarca")
+    private long timestamp;      // Marca temporal en milisegundos
     private String userId;       // ID del usuario que publica
 
-    /** Constructor vacío obligatorio para Firebase (o librerías de mapeo). */
+    /**
+     * Constructor vacío requerido para mapeo automático (Firebase, JSON, etc.)
+     */
     public Trip() { }
 
     /**
      * Constructor completo.
      *
-     * @param id          ID
+     * @param id          ID único (puede ser null antes de guardar)
      * @param title       Título del viaje
-     * @param description Descripción del viaje
-     * @param imageUrl    link de la imagen
-     * @param timestamp   Tiempo (en ms)
-     * @param userId      Id del Autor
+     * @param description Descripción breve
+     * @param imageUrl    URL de la imagen destacada
+     * @param location    Ubicación del viaje
+     * @param timestamp   Marca temporal en milisegundos
+     * @param userId      ID del autor del viaje
      */
-    public Trip(String id, String title, String description,
-                String imageUrl, long timestamp, String userId) {
+    public Trip(String id,
+                String title,
+                String description,
+                String imageUrl,
+                String location,
+                long timestamp,
+                String userId) {
         this.id = id;
         this.title = title;
         this.description = description;
         this.imageUrl = imageUrl;
+        this.location = location;
         this.timestamp = timestamp;
         this.userId = userId;
     }
 
-    // Getters y setters
+    // Getters y Setters
 
     public String getId() {
         return id;
@@ -69,6 +81,14 @@ public class Trip {
         this.imageUrl = imageUrl;
     }
 
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
     public long getTimestamp() {
         return timestamp;
     }
@@ -92,6 +112,7 @@ public class Trip {
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
                 ", imageUrl='" + imageUrl + '\'' +
+                ", location='" + location + '\'' +
                 ", timestamp=" + timestamp +
                 ", userId='" + userId + '\'' +
                 '}';

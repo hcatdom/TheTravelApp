@@ -8,8 +8,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.hcatdom.travelsocialapp.R;
 import com.hcatdom.travelsocialapp.Trip;
 
@@ -19,10 +21,27 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Adapter para mostrar una lista de viajes con ubicación y manejo de clicks en la imagen.
+ */
 public class TripAdapter extends RecyclerView.Adapter<TripAdapter.TripViewHolder> {
-    private final List<Trip> trips = new ArrayList<>();
 
-    /** Sustituye la lista y refresca la vista */
+    /** Interfaz para escuchar clicks en la imagen del viaje */
+    public interface OnTripClickListener {
+        void onTripImageClick(Trip trip);
+    }
+
+    private final List<Trip> trips = new ArrayList<>();
+    private final OnTripClickListener listener;
+
+    /**
+     * @param listener Callback para clicks en la imagen
+     */
+    public TripAdapter(OnTripClickListener listener) {
+        this.listener = listener;
+    }
+
+    /** Reemplaza la lista de viajes y refresca la vista */
     public void setTrips(@NonNull List<Trip> newTrips) {
         trips.clear();
         trips.addAll(newTrips);
@@ -41,10 +60,14 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.TripViewHolder
     public void onBindViewHolder(@NonNull TripViewHolder holder, int position) {
         Trip trip = trips.get(position);
         holder.tvTitle.setText(trip.getTitle());
+        holder.tvLocation.setText(trip.getLocation());
         holder.tvDescription.setText(trip.getDescription());
 
-        // Descarga la imagen en background y la muestra al terminar
+        // Descargar imagen sin dependencias externas
         new ImageLoadTask(holder.imgTrip).execute(trip.getImageUrl());
+
+        // Asignar callback al click sobre la imagen
+        holder.imgTrip.setOnClickListener(v -> listener.onTripImageClick(trip));
     }
 
     @Override
@@ -52,22 +75,24 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.TripViewHolder
         return trips.size();
     }
 
-    /** ViewHolder que contiene las vistas de cada item */
+    /** ViewHolder que contiene vistas de cada item */
     static class TripViewHolder extends RecyclerView.ViewHolder {
-        ImageView imgTrip;
-        TextView tvTitle, tvDescription;
+        final ImageView imgTrip;
+        final TextView tvTitle;
+        final TextView tvLocation;
+        final TextView tvDescription;
 
         TripViewHolder(@NonNull View itemView) {
             super(itemView);
             imgTrip = itemView.findViewById(R.id.imgTrip);
             tvTitle = itemView.findViewById(R.id.tvTitle);
+            tvLocation = itemView.findViewById(R.id.tvLocation);
             tvDescription = itemView.findViewById(R.id.tvDescription);
         }
     }
 
     /**
-     * Tarea asíncrona para descargar una imagen desde una URL
-     * y asignarla a un ImageView sin librerías externas.
+     * Tarea asíncrona para descargar una imagen desde una URL y asignarla
      */
     private static class ImageLoadTask extends AsyncTask<String, Void, Bitmap> {
         private final ImageView imageView;
@@ -98,8 +123,8 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.TripViewHolder
             if (bitmap != null) {
                 imageView.setImageBitmap(bitmap);
             } else {
-                // Imagen por defecto en caso de fallo
-                imageView.setImageResource(R.drawable.ic_launcher_background);
+                // Recurso de error del sistema
+                imageView.setImageResource(android.R.drawable.stat_notify_error);
             }
         }
     }
