@@ -11,9 +11,9 @@
     <io.getstream.photoview.PhotoView
         android:id="@+id/photoView"
         android:layout_width="match_parent"
-        android:scaleType="centerCrop"
         android:layout_height="match_parent"
-        android:src="@drawable/mapa2"/>
+        android:scaleType="centerCrop"
+        android:src="@drawable/mapa2" />
 
     <ImageView
         android:id="@+id/pin1"

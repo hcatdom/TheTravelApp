@@ -10,7 +10,7 @@ public class Trip implements Serializable {
     private String id;           // ID único del viaje
     private String title;        // Título del viaje
     private String description;  // Descripción del viaje
-    private String imageUrl;     // URL de la imagen destacada
+    private int imageResId;     // URL de la imagen destacada
     private String location;     // Ubicación (p.ej. "La Comarca")
     private long timestamp;      // Marca temporal en milisegundos
     private String userId;       // ID del usuario que publica
@@ -26,7 +26,7 @@ public class Trip implements Serializable {
      * @param id          ID único (puede ser null antes de guardar)
      * @param title       Título del viaje
      * @param description Descripción breve
-     * @param imageUrl    URL de la imagen destacada
+     * @param imageResId    URL de la imagen destacada
      * @param location    Ubicación del viaje
      * @param timestamp   Marca temporal en milisegundos
      * @param userId      ID del autor del viaje
@@ -34,14 +34,14 @@ public class Trip implements Serializable {
     public Trip(String id,
                 String title,
                 String description,
-                String imageUrl,
+                int imageResId,
                 String location,
                 long timestamp,
                 String userId) {
         this.id = id;
         this.title = title;
         this.description = description;
-        this.imageUrl = imageUrl;
+        this.imageResId = imageResId;
         this.location = location;
         this.timestamp = timestamp;
         this.userId = userId;
@@ -73,12 +73,12 @@ public class Trip implements Serializable {
         this.description = description;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
+    public int getImageResId() {
+        return imageResId;
     }
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
+    public void setImageResId(int imageResId) {
+        this.imageResId = imageResId;
     }
 
     public String getLocation() {
@@ -111,7 +111,7 @@ public class Trip implements Serializable {
                 "id='" + id + '\'' +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
-                ", imageUrl='" + imageUrl + '\'' +
+                ", imageUrl='" + imageResId + '\'' +
                 ", location='" + location + '\'' +
                 ", timestamp=" + timestamp +
                 ", userId='" + userId + '\'' +

@@ -34,9 +34,9 @@ public class DetallesViaje extends AppCompatActivity {
         setContentView(R.layout.activity_trip_detail);
 
         // 1) Referencias a las vistas
-        detailImg         = findViewById(R.id.detailImg);
-        detailTitle       = findViewById(R.id.detailTitle);
-        detailLocation    = findViewById(R.id.detailLocation);
+        detailImg = findViewById(R.id.detailImg);
+        detailTitle = findViewById(R.id.detailTitle);
+        detailLocation = findViewById(R.id.detailLocation);
         detailDescription = findViewById(R.id.detailDescription);
 
         // 2) Recuperar el Trip enviado desde el fragmento
@@ -54,47 +54,9 @@ public class DetallesViaje extends AppCompatActivity {
             detailLocation.setText("Ubicación: " + trip.getLocation());
             detailDescription.setText(trip.getDescription());
             // 4) Descargar imagen
-            new ImageLoadTask(detailImg).execute(trip.getImageUrl());
+            detailImg.setImageResource(trip.getImageResId());
         } else {
             detailTitle.setText("Detalle no disponible");
-        }
-    }
-
-    /**
-     * Tarea asíncrona para descargar una imagen de la red
-     * y asignarla al ImageView sin librerías externas.
-     */
-    private static class ImageLoadTask extends AsyncTask<String, Void, Bitmap> {
-        private final ImageView imageView;
-
-        ImageLoadTask(ImageView imageView) {
-            this.imageView = imageView;
-        }
-
-        @Override
-        protected Bitmap doInBackground(String... urls) {
-            String urlString = urls[0];
-            try {
-                URL url = new URL(urlString);
-                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-                conn.setDoInput(true);
-                conn.connect();
-                try (InputStream is = conn.getInputStream()) {
-                    return BitmapFactory.decodeStream(is);
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-                return null;
-            }
-        }
-
-        @Override
-        protected void onPostExecute(Bitmap bmp) {
-            if (bmp != null) {
-                imageView.setImageBitmap(bmp);
-            } else {
-                imageView.setImageResource(android.R.drawable.stat_notify_error);
-            }
         }
     }
 }

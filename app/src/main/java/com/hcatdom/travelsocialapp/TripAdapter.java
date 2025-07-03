@@ -64,7 +64,7 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.TripViewHolder
         holder.tvDescription.setText(trip.getDescription());
 
         // Descargar imagen sin dependencias externas
-        new ImageLoadTask(holder.imgTrip).execute(trip.getImageUrl());
+       holder.imgTrip.setImageResource(trip.getImageResId());
 
         // Asignar callback al click sobre la imagen
         holder.imgTrip.setOnClickListener(v -> listener.onTripImageClick(trip));
@@ -88,44 +88,6 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.TripViewHolder
             tvTitle = itemView.findViewById(R.id.tvTitle);
             tvLocation = itemView.findViewById(R.id.tvLocation);
             tvDescription = itemView.findViewById(R.id.tvDescription);
-        }
-    }
-
-    /**
-     * Tarea asíncrona para descargar una imagen desde una URL y asignarla
-     */
-    private static class ImageLoadTask extends AsyncTask<String, Void, Bitmap> {
-        private final ImageView imageView;
-
-        ImageLoadTask(ImageView imageView) {
-            this.imageView = imageView;
-        }
-
-        @Override
-        protected Bitmap doInBackground(String... urls) {
-            String urlString = urls[0];
-            try {
-                URL url = new URL(urlString);
-                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-                conn.setDoInput(true);
-                conn.connect();
-                try (InputStream is = conn.getInputStream()) {
-                    return BitmapFactory.decodeStream(is);
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-                return null;
-            }
-        }
-
-        @Override
-        protected void onPostExecute(Bitmap bitmap) {
-            if (bitmap != null) {
-                imageView.setImageBitmap(bitmap);
-            } else {
-                // Recurso de error del sistema
-                imageView.setImageResource(android.R.drawable.stat_notify_error);
-            }
         }
     }
 }
