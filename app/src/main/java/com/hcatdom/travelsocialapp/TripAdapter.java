@@ -14,7 +14,7 @@ import java.util.Random;
 
 public class TripAdapter extends RecyclerView.Adapter<TripAdapter.TripViewHolder> {
 
-    /** Listener para clicks en la imagen */
+    //diseñamos el listener para saltar de pestaña al pulsar la imagen
     public interface OnTripClickListener {
         void onTripImageClick(Trip trip);
     }
@@ -39,13 +39,12 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.TripViewHolder
     public void onBindViewHolder(@NonNull TripViewHolder holder, int position) {
         Trip trip = trips.get(position);
 
-        // Campos siempre visibles
         holder.tvTitle.setText(trip.getTitle());
         holder.tvLocation.setText(trip.getLocation());
         holder.tvDescription.setText(trip.getDescription());
         holder.imgTrip.setImageResource(trip.getImageResId());
 
-        // Click en la imagen abre detalle
+        // Abrimos los detalles del viaje
         holder.imgTrip.setOnClickListener(v -> listener.onTripImageClick(trip));
     }
 
@@ -53,9 +52,7 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.TripViewHolder
     public int getItemCount() {
         return trips.size();
     }
-
-    /** ViewHolder para cada item */
-    static class TripViewHolder extends RecyclerView.ViewHolder {
+        static class TripViewHolder extends RecyclerView.ViewHolder {
         final ImageView imgTrip;
         final TextView tvTitle;
         final TextView tvLocation;

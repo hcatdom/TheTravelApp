@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -14,8 +13,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.hcatdom.travelsocialapp.databinding.FragmentProfileBinding;
-import com.hcatdom.travelsocialapp.AddTripFragment;
-import com.hcatdom.travelsocialapp.databinding.FragmentSocialBinding;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -40,7 +37,7 @@ public class ProfileFragment extends Fragment {
                               @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // Botón "Añadir viaje"
+        // boton añadir viaje (puro postureo porque no es funcional)
         binding.addTripButton.setOnClickListener(v ->{
             requireActivity()
                     .getSupportFragmentManager()
@@ -53,7 +50,7 @@ public class ProfileFragment extends Fragment {
         RecyclerView rvTrips = binding.rvTrips;
         rvTrips.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        // 1) Cargar la lista de viajes
+        // cremoas el viaje del bosque negro, con id 4 y que anclaremos al perfil de frodo
         List<Trip> list = new ArrayList<>();
         list.add(new Trip(
                 "4",
@@ -65,14 +62,11 @@ public class ProfileFragment extends Fragment {
                 "seniorfrodoomg"
         ));;
 
-        // 2) Crear el adapter pasándole la lista y el listener para clicks en la imagen
         adapter = new TripAdapter(list, trip -> {
             Intent intent = new Intent(getContext(), DetallesViaje.class);
             intent.putExtra(DetallesViaje.EXTRA_TRIP, (Serializable) trip);
             startActivity(intent);
         });
-
-        // 3) Asociar el adapter al RecyclerView
         rvTrips.setAdapter(adapter);
 
     }

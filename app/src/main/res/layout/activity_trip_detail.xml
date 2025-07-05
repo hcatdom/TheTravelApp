@@ -16,14 +16,13 @@
             android:textSize="20sp"
             android:textStyle="bold"
             android:layout_marginTop="4dp" />
-        <!-- Imagen del viaje -->
+
         <ImageView
             android:id="@+id/detailImg"
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:scaleType="centerCrop" />
 
-        <!-- Título -->
         <TextView
             android:id="@+id/detailTitle"
             android:layout_width="wrap_content"
@@ -32,7 +31,6 @@
             android:textStyle="bold"
             android:layout_marginTop="12dp" />
 
-        <!-- Ubicación -->
         <TextView
             android:id="@+id/detailLocation"
             android:layout_width="wrap_content"
@@ -40,7 +38,6 @@
             android:textSize="16sp"
             android:layout_marginTop="8dp" />
 
-        <!-- Hora -->
         <TextView
             android:id="@+id/detailTime"
             android:layout_width="wrap_content"
@@ -48,7 +45,6 @@
             android:textSize="16sp"
             android:layout_marginTop="4dp" />
 
-        <!-- Descripción -->
         <TextView
             android:id="@+id/detailDescription"
             android:layout_width="wrap_content"
@@ -56,7 +52,6 @@
             android:textSize="14sp"
             android:layout_marginTop="12dp" />
 
-        <!-- Botón “Ver viaje” renombrado -->
         <Button
             android:id="@+id/btnVerViaje"
             android:layout_width="match_parent"

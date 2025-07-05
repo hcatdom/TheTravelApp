@@ -2,9 +2,6 @@ package com.hcatdom.travelsocialapp;
 
 import java.io.Serializable;
 
-/**
- * Modelo que representa un viaje en la app.
- */
 public class Trip implements Serializable {
 
     private String id;
@@ -14,20 +11,7 @@ public class Trip implements Serializable {
     private String location;
     private long timestamp;
     private String userId;
-
     public Trip() { }
-
-    /**
-     * Constructor completo.
-     *
-     * @param id          ID único (puede ser null antes de guardar)
-     * @param title       Título
-     * @param description Descripción
-     * @param imageResId    URL de la imagen destacada
-     * @param location    Ubicación
-     * @param timestamp   Marca temporal en milisegundos
-     * @param userId      Autor
-     */
     public Trip(String id,
                 String title,
                 String description,

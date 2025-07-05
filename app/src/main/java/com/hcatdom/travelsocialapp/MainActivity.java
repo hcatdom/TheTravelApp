@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        //el boolean lo creo para cuando apretamos el botón en la pestaña de DetallesViaje. Si no, tbn vamos al Mapa sin pulsar el botón (inicio de la app)
         boolean abrirMapa = getIntent().getBooleanExtra("abrirMapa", false);
         if (abrirMapa) {
             binding.bottomNavigation.setSelectedItemId(R.id.mapFragment);
@@ -24,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
             loadFragment(new MapFragment());
         }
 
+        //Los botones de la parte inferior que hacen que cambiemos de pestañas :)
         binding.bottomNavigation.setOnItemSelectedListener(item -> {
             Fragment selectedFragment = null;
             int itemId = item.getItemId();

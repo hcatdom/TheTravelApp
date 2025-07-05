@@ -2,7 +2,6 @@ package com.hcatdom.travelsocialapp;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -42,12 +41,13 @@ public class DetallesViaje extends AppCompatActivity {
             detailUser.setText("Usuario: " + trip.getUserId());
 
             String tiempo;
+            //Esto sirve para que el programa no colapse y elija correctamente cada viaje de los q hemos hecho
             switch (trip.getId()) {
                 case "1": tiempo = "Por la mañana"; break;
                 case "2": tiempo = "Tardeo"; break;
                 case "3": tiempo = "A la luz de la taberna"; break;
                 case "4": tiempo = "Bañados por la luz del amanecer"; break;
-                default:  tiempo = "En algún momento de la jornada";
+                default:  tiempo = "En algún momento de la jornada"; //pongo este de default por si queréis añadir más viajes
             }
             detailTime.setText("Hora de la Tierra Media: " + tiempo);
             detailDescription.setText(trip.getDescription());

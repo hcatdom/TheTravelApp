@@ -7,7 +7,6 @@
     android:background="@drawable/fondoviaje"
     android:padding="16dp">
 
-    <!-- Imagen del viaje -->
     <ImageView
         android:id="@+id/imgTrip"
         android:layout_width="match_parent"
@@ -15,7 +14,6 @@
         android:scaleType="centerCrop"
         android:contentDescription="Imagen del viaje" />
 
-    <!-- Título del viaje -->
     <TextView
         android:id="@+id/tvTitle"
         android:layout_width="match_parent"
@@ -25,7 +23,6 @@
         android:textStyle="bold"
         android:layout_marginTop="8dp" />
 
-    <!-- Ubicación breve -->
     <TextView
         android:id="@+id/tvLocation"
         android:layout_width="match_parent"
@@ -34,7 +31,6 @@
         android:textSize="14sp"
         android:layout_marginTop="4dp" />
 
-    <!-- Descripción breve -->
     <TextView
         android:id="@+id/tvDescription"
         android:layout_width="match_parent"

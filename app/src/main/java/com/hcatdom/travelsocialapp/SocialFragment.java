@@ -28,11 +28,10 @@ public class SocialFragment extends Fragment {
 
         binding = FragmentSocialBinding.inflate(inflater, container, false);
 
-        // Configurar RecyclerView
         RecyclerView rvTrips = binding.rvTrips;
         rvTrips.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        // 1) Cargar la lista de viajes
+        // Cremos los tres viajes que serán mostrados en la pantalla (podemos crear más)
         List<Trip> list = new ArrayList<>();
         list.add(new Trip(
                 "1",
@@ -62,14 +61,11 @@ public class SocialFragment extends Fragment {
                 "enano777"
         ));
 
-        // 2) Crear el adapter pasándole la lista y el listener para clicks en la imagen
         adapter = new TripAdapter(list, trip -> {
             Intent intent = new Intent(getContext(), DetallesViaje.class);
             intent.putExtra(DetallesViaje.EXTRA_TRIP, (Serializable) trip);
             startActivity(intent);
         });
-
-        // 3) Asociar el adapter al RecyclerView
         rvTrips.setAdapter(adapter);
 
         return binding.getRoot();

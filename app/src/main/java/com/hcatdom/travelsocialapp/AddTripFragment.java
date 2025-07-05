@@ -24,12 +24,11 @@ public class AddTripFragment extends Fragment {
         return binding.getRoot();
     }
 
+    //Creamos los botones y los mensajes que muestran tras el Click
     @Override
     public void onViewCreated(@NonNull View view,
                               @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        // Placeholder: mensajes al pulsar botones
         binding.selectLocationButton.setOnClickListener(v ->
                 Toast.makeText(getContext(), "Seleccionar ubicación", Toast.LENGTH_SHORT).show()
         );

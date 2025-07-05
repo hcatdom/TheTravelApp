@@ -14,7 +14,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.io.Serializable;
 
@@ -41,7 +40,7 @@ public class MapFragment extends Fragment {
         ImageView pin3 = view.findViewById(R.id.pin3);
         ImageView pin4 = view.findViewById(R.id.pin4);
 
-        //coordenadas
+        //Localización pines
         final float originalX1 = 1500f;
         final float originalY1 = 800f;
         final float originalX2 = 2350f;
@@ -61,7 +60,7 @@ public class MapFragment extends Fragment {
                 float transX = matrixValues[Matrix.MTRANS_X];
                 float transY = matrixValues[Matrix.MTRANS_Y];
 
-                //escala
+                //escalas pines
                 float pinX1 = originalX1 * scale + transX;
                 float pinY1 = originalY1 * scale + transY;
                 float pinX2 = originalX2 * scale + transX;
@@ -71,7 +70,7 @@ public class MapFragment extends Fragment {
                 float pinX4 = originalX4 * scale + transX;
                 float pinY4 = originalY4 * scale + transY;
 
-                //centrar y asignar posicion
+                //centrar y asignar posicion de pines
                 pin1.setX(pinX1 - pin1.getWidth() / 2f);
                 pin1.setY(pinY1 - pin1.getHeight());
                 pin2.setX(pinX2 - pin2.getWidth() / 2f);
@@ -95,7 +94,7 @@ public class MapFragment extends Fragment {
                     "enano777"
             );
             View popupView = LayoutInflater.from(getContext()).inflate(R.layout.fragment_popup, null);
-
+            //salta el mensajito en el mapa junto al botoncito
             PopupWindow popupWindow = new PopupWindow(
                     popupView,
                     ViewGroup.LayoutParams.WRAP_CONTENT,
@@ -105,6 +104,7 @@ public class MapFragment extends Fragment {
             TextView popupTitle = popupView.findViewById(R.id.popupTitle);
             Button btnVerDetalles = popupView.findViewById(R.id.btnVerViaje);
             popupTitle.setText("enano777 ha ido a Ered Luin");
+            //el boton nos lleva a DetallesViaje
             btnVerDetalles.setOnClickListener(btn -> {
                 Intent intent = new Intent(getContext(), DetallesViaje.class);
                 intent.putExtra(DetallesViaje.EXTRA_TRIP, (Serializable) trip1);
