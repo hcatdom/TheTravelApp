@@ -1,46 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="16dp">
+    android:layout_height="match_parent">
 
     <LinearLayout
+        android:orientation="vertical"
+        android:padding="16dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="wrap_content">
 
+        <TextView
+            android:id="@+id/detailUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginTop="4dp" />
+        <!-- Imagen del viaje -->
         <ImageView
             android:id="@+id/detailImg"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:scaleType="centerCrop"
-            android:contentDescription="Imagen" />
+            android:scaleType="centerCrop" />
 
+        <!-- Título -->
         <TextView
             android:id="@+id/detailTitle"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:text="Título"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginTop="12dp" />
 
+        <!-- Ubicación -->
         <TextView
             android:id="@+id/detailLocation"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:text="Ubicación: "
             android:textSize="16sp"
-            android:textStyle="italic" />
+            android:layout_marginTop="8dp" />
 
+        <!-- Hora -->
+        <TextView
+            android:id="@+id/detailTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:layout_marginTop="4dp" />
+
+        <!-- Descripción -->
         <TextView
             android:id="@+id/detailDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:layout_marginTop="12dp" />
+
+        <!-- Botón “Ver viaje” renombrado -->
+        <Button
+            android:id="@+id/btnVerViaje"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Descripción"
-            android:textSize="16sp" />
-
+            android:text="Ver viaje"
+            android:layout_marginTop="16dp"/>
     </LinearLayout>
 </ScrollView>

@@ -1,8 +1,5 @@
 package com.hcatdom.travelsocialapp;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.os.AsyncTask;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,40 +9,22 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.hcatdom.travelsocialapp.R;
-import com.hcatdom.travelsocialapp.Trip;
-
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
-/**
- * Para los viajes en social
- */
 public class TripAdapter extends RecyclerView.Adapter<TripAdapter.TripViewHolder> {
 
-    /** Para detectar cuando se haga click */
+    /** Listener para clicks en la imagen */
     public interface OnTripClickListener {
         void onTripImageClick(Trip trip);
     }
 
-    private final List<Trip> trips = new ArrayList<>();
+    private final List<Trip> trips;
     private final OnTripClickListener listener;
 
-    /**
-     * @param listener Callback para clicks en la imagen
-     */
-    public TripAdapter(OnTripClickListener listener) {
+    public TripAdapter(List<Trip> trips, OnTripClickListener listener) {
+        this.trips = trips;
         this.listener = listener;
-    }
-
-    /** Reemplaza la lista de viajes y refresca la vista */
-    public void setTrips(@NonNull List<Trip> newTrips) {
-        trips.clear();
-        trips.addAll(newTrips);
-        notifyDataSetChanged();
     }
 
     @NonNull
@@ -59,12 +38,14 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.TripViewHolder
     @Override
     public void onBindViewHolder(@NonNull TripViewHolder holder, int position) {
         Trip trip = trips.get(position);
+
+        // Campos siempre visibles
         holder.tvTitle.setText(trip.getTitle());
         holder.tvLocation.setText(trip.getLocation());
         holder.tvDescription.setText(trip.getDescription());
-
         holder.imgTrip.setImageResource(trip.getImageResId());
 
+        // Click en la imagen abre detalle
         holder.imgTrip.setOnClickListener(v -> listener.onTripImageClick(trip));
     }
 
@@ -73,7 +54,7 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.TripViewHolder
         return trips.size();
     }
 
-    /** Viewholder que contiene vistas de cada item */
+    /** ViewHolder para cada item */
     static class TripViewHolder extends RecyclerView.ViewHolder {
         final ImageView imgTrip;
         final TextView tvTitle;

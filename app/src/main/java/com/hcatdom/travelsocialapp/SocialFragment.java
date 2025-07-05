@@ -11,52 +11,29 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.hcatdom.travelsocialapp.R;
-import com.hcatdom.travelsocialapp.TripAdapter;
-import com.hcatdom.travelsocialapp.Trip;
-import com.hcatdom.travelsocialapp.DetallesViaje;
+import com.hcatdom.travelsocialapp.databinding.FragmentSocialBinding;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Fragment “Social” que muestra 10 viajes predeterminados de la Tierra Media.
- */
 public class SocialFragment extends Fragment {
-    private RecyclerView rvTrips;
+    private FragmentSocialBinding binding;
     private TripAdapter adapter;
-
-    public SocialFragment() {
-        // Constructor vacío
-    }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View root = inflater.inflate(R.layout.fragment_social, container, false);
+        binding = FragmentSocialBinding.inflate(inflater, container, false);
 
-        rvTrips = root.findViewById(R.id.rvTrips);
+        // Configurar RecyclerView
+        RecyclerView rvTrips = binding.rvTrips;
         rvTrips.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        adapter = new TripAdapter(trip -> {
-            Intent intent = new Intent(getContext(), DetallesViaje.class);
-            intent.putExtra(DetallesViaje.EXTRA_TRIP, (Serializable) trip);
-            startActivity(intent);
-        });
-        rvTrips.setAdapter(adapter);
-
-        loadLocalTrips();
-
-        return root;
-    }
-
-    /** Rellena el adapter con 10 viajes hardcodeados */
-    private void loadLocalTrips() {
+        // 1) Cargar la lista de viajes
         List<Trip> list = new ArrayList<>();
-
         list.add(new Trip(
                 "1",
                 "Viaje de aventura a las montañas azules",
@@ -66,7 +43,6 @@ public class SocialFragment extends Fragment {
                 System.currentTimeMillis(),
                 "enano777"
         ));
-
         list.add(new Trip(
                 "2",
                 "Devolviendo la luz a donde se merece :P",
@@ -76,7 +52,6 @@ public class SocialFragment extends Fragment {
                 System.currentTimeMillis() + 1000,
                 "_.._tublancooo_.._"
         ));
-
         list.add(new Trip(
                 "3",
                 "Cata de hidromiel en La Comarca",
@@ -87,6 +62,22 @@ public class SocialFragment extends Fragment {
                 "enano777"
         ));
 
-        adapter.setTrips(list);
+        // 2) Crear el adapter pasándole la lista y el listener para clicks en la imagen
+        adapter = new TripAdapter(list, trip -> {
+            Intent intent = new Intent(getContext(), DetallesViaje.class);
+            intent.putExtra(DetallesViaje.EXTRA_TRIP, (Serializable) trip);
+            startActivity(intent);
+        });
+
+        // 3) Asociar el adapter al RecyclerView
+        rvTrips.setAdapter(adapter);
+
+        return binding.getRoot();
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
     }
 }

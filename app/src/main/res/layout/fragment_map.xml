@@ -8,7 +8,6 @@
     tools:context=".MapFragment"
     android:id="@+id/frameContainer">
 
-    //mapa
     <io.getstream.photoview.PhotoView
         android:id="@+id/photoView"
         android:layout_width="match_parent"
@@ -16,7 +15,6 @@
         android:layout_height="match_parent"
         android:src="@drawable/mapa2"/>
 
-    //pines
     <ImageView
         android:id="@+id/pin1"
         android:layout_width="55dp"
