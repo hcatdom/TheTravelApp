@@ -46,6 +46,7 @@ public class DetallesViaje extends AppCompatActivity {
                 case "1": tiempo = "Por la mañana"; break;
                 case "2": tiempo = "Tardeo"; break;
                 case "3": tiempo = "A la luz de la taberna"; break;
+                case "4": tiempo = "Bañados por la luz del amanecer"; break;
                 default:  tiempo = "En algún momento de la jornada";
             }
             detailTime.setText("Hora de la Tierra Media: " + tiempo);

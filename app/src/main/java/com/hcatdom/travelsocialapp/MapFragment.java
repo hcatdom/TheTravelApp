@@ -182,6 +182,15 @@ public class MapFragment extends Fragment {
 
         //Viaje usuario
         pin4.setOnClickListener(v -> {
+            Trip trip4=new Trip(
+                    "4",
+                    "Viaje al bosque negro",
+                    "Paseíllo mañanero con mi amigo Sam (que va lentín) por el bosque negro.",
+                    R.drawable.frodoviaje,
+                    "Bosque Negro",
+                    System.currentTimeMillis(),
+                    "seniorfrodoomg"
+            );
             View popupView = LayoutInflater.from(getContext()).inflate(R.layout.fragment_popup, null);
             PopupWindow popupWindow = new PopupWindow(
                     popupView,
@@ -193,8 +202,9 @@ public class MapFragment extends Fragment {
             Button btnVerDetalles = popupView.findViewById(R.id.btnVerViaje);
             popupTitle.setText("Has ido al Bosque Negro");
             btnVerDetalles.setOnClickListener(btn -> {
-                Toast.makeText(getContext(), "Próxima actualización. Puedes ver el viaje en tu perfil.", Toast.LENGTH_LONG).show();
-                popupWindow.dismiss();
+                Intent intent = new Intent(getContext(), DetallesViaje.class);
+                intent.putExtra(DetallesViaje.EXTRA_TRIP, (Serializable) trip4);
+                startActivity(intent);
             });
             int offsetX = 0;
             int offsetY = -pin4.getHeight() - 20;

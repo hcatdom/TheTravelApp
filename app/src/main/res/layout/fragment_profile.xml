@@ -44,11 +44,19 @@
             android:text="Añadir viaje"
             android:layout_marginBottom="16dp" />
 
-        <Button
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/MisViajes"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/viewTripsButton"
-            android:text="Ver mis viajes" />
+            android:text="Mis Viajes"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvTrips"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="8dp"/>
 
     </LinearLayout>
 
