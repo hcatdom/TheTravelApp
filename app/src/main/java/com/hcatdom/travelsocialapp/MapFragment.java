@@ -1,5 +1,6 @@
 package com.hcatdom.travelsocialapp;
 
+import android.content.Intent;
 import android.graphics.Matrix;
 import android.graphics.RectF;
 import android.os.Bundle;
@@ -14,6 +15,8 @@ import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.io.Serializable;
 
 import io.getstream.photoview.OnMatrixChangedListener;
 import io.getstream.photoview.PhotoView;
@@ -82,6 +85,15 @@ public class MapFragment extends Fragment {
 
         //Viaje gimli 1
         pin1.setOnClickListener(v -> {
+            Trip trip1=new Trip(
+                    "1",
+                    "Viaje de aventura a las montañas azules",
+                    "Vacaciones a base de rutitas visitando los parajes del norte.",
+                    R.drawable.bluemountains,
+                    "Montañas Azules",
+                    System.currentTimeMillis(),
+                    "enano777"
+            );
             View popupView = LayoutInflater.from(getContext()).inflate(R.layout.fragment_popup, null);
 
             PopupWindow popupWindow = new PopupWindow(
@@ -94,8 +106,9 @@ public class MapFragment extends Fragment {
             Button btnVerDetalles = popupView.findViewById(R.id.btnVerViaje);
             popupTitle.setText("enano777 ha ido a Ered Luin");
             btnVerDetalles.setOnClickListener(btn -> {
-                Toast.makeText(getContext(), "Próxima actualización. Puedes ver el viaje en su perfil.", Toast.LENGTH_LONG).show();
-                popupWindow.dismiss();
+                Intent intent = new Intent(getContext(), DetallesViaje.class);
+                intent.putExtra(DetallesViaje.EXTRA_TRIP, (Serializable) trip1);
+                startActivity(intent);
             });
             int offsetX = 0;
             int offsetY = -pin1.getHeight() - 20;
@@ -105,6 +118,15 @@ public class MapFragment extends Fragment {
 
         //Viaje gimli 2
         pin2.setOnClickListener(v -> {
+            Trip trip3 = new Trip(
+                    "3",
+                    "Cata de hidromiel en La Comarca",
+                    "Un disfrute de los brebajes que fermentan los propios hobbits.",
+                    R.drawable.comarca,
+                    "La Comarca",
+                    System.currentTimeMillis() + 2000,
+                    "enano777"
+            );
             View popupView = LayoutInflater.from(getContext()).inflate(R.layout.fragment_popup, null);
             PopupWindow popupWindow = new PopupWindow(
                     popupView,
@@ -116,8 +138,9 @@ public class MapFragment extends Fragment {
             Button btnVerDetalles = popupView.findViewById(R.id.btnVerViaje);
             popupTitle.setText("enano777 ha ido a La Comarca con orlando_bloom_fans");
             btnVerDetalles.setOnClickListener(btn -> {
-                Toast.makeText(getContext(), "Próxima actualización. Puedes ver el viaje en su perfil.", Toast.LENGTH_LONG).show();
-                popupWindow.dismiss();
+                Intent intent = new Intent(getContext(), DetallesViaje.class);
+                intent.putExtra(DetallesViaje.EXTRA_TRIP, (Serializable) trip3);
+                startActivity(intent);
             });
             int offsetX = 0;
             int offsetY = -pin2.getHeight() - 20;
@@ -127,6 +150,15 @@ public class MapFragment extends Fragment {
 
         //Viaje gandalf
         pin3.setOnClickListener(v -> {
+            Trip trip2 = new Trip(
+                    "2",
+                    "Devolviendo la luz a donde se merece :P",
+                    "Tardeo destruyendo el anillo que los une a todos con los panas.",
+                    R.drawable.mordor,
+                    "Mordor",
+                    System.currentTimeMillis() + 1000,
+                    "_.._tublancooo_.._"
+            );
             View popupView = LayoutInflater.from(getContext()).inflate(R.layout.fragment_popup, null);
             PopupWindow popupWindow = new PopupWindow(
                     popupView,
@@ -138,8 +170,9 @@ public class MapFragment extends Fragment {
             Button btnVerDetalles = popupView.findViewById(R.id.btnVerViaje);
             popupTitle.setText("_.._tublancooo_.._ ha ido a La Torre de Sauron, en Mordor");
             btnVerDetalles.setOnClickListener(btn -> {
-                Toast.makeText(getContext(), "Próxima actualización. Puedes ver el viaje en su perfil.", Toast.LENGTH_LONG).show();
-                popupWindow.dismiss();
+                Intent intent = new Intent(getContext(), DetallesViaje.class);
+                intent.putExtra(DetallesViaje.EXTRA_TRIP, (Serializable) trip2);
+                startActivity(intent);
             });
             int offsetX = 0;
             int offsetY = -pin3.getHeight() - 20;
