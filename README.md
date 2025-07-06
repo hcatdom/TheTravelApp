@@ -1,4 +1,4 @@
-Este repositorio lo creamos sin ser conscientes de el repositorio de clase que se había abirto por nosotros por los profesores. Como no hemos sido capaces de mover el código al repositorio original hemos dejado este como referencia de los cambios y el trabajo paso a paso que hemos ido haciendo. La memoria completa está subida también en el documento memoria y, alternativamente, en el documento de informe proyecto se encuentra una versión más extensa.
+Este repositorio lo creamos sin ser conscientes del repositorio de clase que se había abirto por nosotros por los profesores. Como no hemos sido capaces de mover el código al repositorio original hemos dejado este como referencia de los cambios y el trabajo paso a paso que hemos ido haciendo. La memoria completa está subida también en el documento memoria y, alternativamente, en el documento de informe proyecto se encuentra una versión más extensa.
 
 Este grupo está formado por: Héctor Català Domenèch, Pablo Úcar Gargallo, Eduar Llistó Estela y Laura Orejas Gonzalez.
 
