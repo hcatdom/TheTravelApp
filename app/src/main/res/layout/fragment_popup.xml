@@ -16,7 +16,7 @@
         android:layout_width="wrap_content"/>
 
     <Button
-        android:id="@+id/btnVerViaje"
+        android:id="@+id/VerViaje"
         android:text="Ver Viaje"
         android:layout_marginTop="8dp"
         android:layout_width="wrap_content"
