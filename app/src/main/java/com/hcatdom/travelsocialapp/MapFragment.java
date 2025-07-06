@@ -102,7 +102,7 @@ public class MapFragment extends Fragment {
                     true
             );
             TextView popupTitle = popupView.findViewById(R.id.popupTitle);
-            Button btnVerDetalles = popupView.findViewById(R.id.btnVerViaje);
+            Button btnVerDetalles = popupView.findViewById(R.id.VerViaje);
             popupTitle.setText("enano777 ha ido a Ered Luin");
             //el boton nos lleva a DetallesViaje
             btnVerDetalles.setOnClickListener(btn -> {
@@ -135,7 +135,7 @@ public class MapFragment extends Fragment {
                     true
             );
             TextView popupTitle = popupView.findViewById(R.id.popupTitle);
-            Button btnVerDetalles = popupView.findViewById(R.id.btnVerViaje);
+            Button btnVerDetalles = popupView.findViewById(R.id.VerViaje);
             popupTitle.setText("enano777 ha ido a La Comarca con orlando_bloom_fans");
             btnVerDetalles.setOnClickListener(btn -> {
                 Intent intent = new Intent(getContext(), DetallesViaje.class);
@@ -167,7 +167,7 @@ public class MapFragment extends Fragment {
                     true
             );
             TextView popupTitle = popupView.findViewById(R.id.popupTitle);
-            Button btnVerDetalles = popupView.findViewById(R.id.btnVerViaje);
+            Button btnVerDetalles = popupView.findViewById(R.id.VerViaje);
             popupTitle.setText("_.._tublancooo_.._ ha ido a La Torre de Sauron, en Mordor");
             btnVerDetalles.setOnClickListener(btn -> {
                 Intent intent = new Intent(getContext(), DetallesViaje.class);
@@ -199,7 +199,7 @@ public class MapFragment extends Fragment {
                     true
             );
             TextView popupTitle = popupView.findViewById(R.id.popupTitle);
-            Button btnVerDetalles = popupView.findViewById(R.id.btnVerViaje);
+            Button btnVerDetalles = popupView.findViewById(R.id.VerViaje);
             popupTitle.setText("Has ido al Bosque Negro");
             btnVerDetalles.setOnClickListener(btn -> {
                 Intent intent = new Intent(getContext(), DetallesViaje.class);
