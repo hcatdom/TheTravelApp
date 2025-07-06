@@ -24,25 +24,24 @@ public class AddTripFragment extends Fragment {
         return binding.getRoot();
     }
 
-    //Creamos los botones y los mensajes que muestran tras el Click
+    //Creamos los botones y los mensajes que muestran tras los clicks en estos
     @Override
     public void onViewCreated(@NonNull View view,
                               @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         binding.selectLocationButton.setOnClickListener(v ->
-                Toast.makeText(getContext(), "Seleccionar ubicación", Toast.LENGTH_SHORT).show()
+                Toast.makeText(getContext(), "Función Premium. Precio 12 Castars.", Toast.LENGTH_SHORT).show()
         );
 
         binding.selectMediaButton.setOnClickListener(v ->
-                Toast.makeText(getContext(), "Seleccionar fotos/videos", Toast.LENGTH_SHORT).show()
+                Toast.makeText(getContext(), "Función Premium. Precio 15 Castars.", Toast.LENGTH_SHORT).show()
         );
 
         binding.saveTripButton.setOnClickListener(v -> {
             String title = binding.tripTitleEditText.getText().toString().trim();
             String desc  = binding.tripDescriptionEditText.getText().toString().trim();
             Toast.makeText(getContext(),
-                    "Guardando viaje:\n" + title + "\n" + desc,
-                    Toast.LENGTH_LONG).show();
+                    "Función Premium. Precio 25 Castars.", Toast.LENGTH_LONG).show();
         });
     }
 
