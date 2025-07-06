@@ -116,7 +116,7 @@ public class MapFragment extends Fragment {
             popupWindow.showAsDropDown(pin1, offsetX, offsetY);
         });
 
-        //Viaje gimli 2
+        //Viaje gimli 2 La Comarca
         pin2.setOnClickListener(v -> {
             Trip trip3 = new Trip(
                     "3",
