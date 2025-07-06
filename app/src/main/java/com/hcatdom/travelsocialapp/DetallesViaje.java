@@ -15,7 +15,7 @@ public class DetallesViaje extends AppCompatActivity {
     private Trip trip;
     private ImageView detailImg;
     private TextView detailTitle, detailLocation, detailUser, detailTime, detailDescription;
-    private Button btnVerViaje;
+    private Button VerViaje;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -28,7 +28,7 @@ public class DetallesViaje extends AppCompatActivity {
         detailUser = findViewById(R.id.detailUser);
         detailTime = findViewById(R.id.detailTime);
         detailDescription = findViewById(R.id.detailDescription);
-        btnVerViaje = findViewById(R.id.btnVerViaje);
+        VerViaje = findViewById(R.id.VerViaje);
 
         if (getIntent().hasExtra(EXTRA_TRIP)) {
             Object obj = getIntent().getSerializableExtra(EXTRA_TRIP);
@@ -56,7 +56,7 @@ public class DetallesViaje extends AppCompatActivity {
             detailTitle.setText("Detalle no disponible");
         }
 
-        btnVerViaje.setOnClickListener(v -> {
+        VerViaje.setOnClickListener(v -> {
             Intent intent = new Intent(DetallesViaje.this, MainActivity.class);
             intent.putExtra("abrirMapa", true);
             startActivity(intent);
